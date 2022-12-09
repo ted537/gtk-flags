@@ -36,17 +36,16 @@ func widgetForStringFlag(
 			"Choose File...",
 			button.GetTopLevelAsWindow(),
 			gtk.FILE_CHOOSER_ACTION_OPEN,
+			gtk.STOCK_CANCEL,
+			gtk.RESPONSE_CANCEL,
 			gtk.STOCK_OK,
 			gtk.RESPONSE_ACCEPT)
-		// filter := gtk.NewFileFilter()
-		// filter.SetName("")
-		// filter.AddPattern("*")
-		// filechooserdialog.AddFilter(filter)
-		filechooserdialog.Response(func() {
+
+		rt := filechooserdialog.Run()
+		if rt == gtk.RESPONSE_ACCEPT {
 			entry.SetText(filechooserdialog.GetFilename())
-			filechooserdialog.Destroy()
-		})
-		filechooserdialog.Run()
+		}
+		filechooserdialog.Destroy()
 	})
 	widget.Add(button)
 

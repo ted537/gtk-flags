@@ -5,18 +5,18 @@ import (
 	"fmt"
 )
 
-var nameFlag = flag.String("name", "example name", "choose a name!!!")
-var reverseFlag = flag.Bool("reverse", false, "should we reverse?")
-var x = flag.CommandLine.Int64("number", 23, "set a number :)")
+var inputFlag = flag.String("input path", "", "Should be a file")
+var outputFlag = flag.String("output path", "", "Should be a folder")
+var strictFlag = flag.Bool("strict", false, "Check data for strict correctness")
 
 func main() {
 	RunGui("My custom application", doStuff)
 }
 
 func doStuff() error {
-	if *reverseFlag {
-		return fmt.Errorf("Reverse not supported")
+	if *strictFlag {
+		return fmt.Errorf("strict not supported yet")
 	}
-	fmt.Println(*nameFlag, *reverseFlag, *x)
+	fmt.Println(*inputFlag, *outputFlag)
 	return nil
 }

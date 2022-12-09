@@ -41,6 +41,7 @@ func authors() []string {
 }
 
 var nameFlag = flag.String("name", "example name", "choose a name!!!")
+var reverseFlag = flag.Bool("reverse", false, "should we reverse?")
 
 func main() {
 	RunGui()
